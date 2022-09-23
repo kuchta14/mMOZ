@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="dkuchta" id="4">
+
+        <createTable tableName="products">
+
+            <column name="name" type="varchar(255)"  >
+                <constraints  primaryKey="true" />
+            </column>
+            <column name="quantity" type="int"/>
+            <column name="price" type="decimal(19, 2)"/>
+        </createTable>
+
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,96 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="dkuchta" id="1">
+
+<!--        <createTable tableName="invoices">-->
+<!--            <column name="id" type="uuid">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="invoice_id" type="varchar(255)"/>-->
+<!--            <column name="invoice_nbr" type="varchar(255)"/>-->
+<!--            <column name="order_id" type="uuid"/>-->
+<!--        </createTable>-->
+
+        <createTable tableName="orders">
+
+            <column name="order_number" type="bigint"  >
+                <constraints  primaryKey="true" />
+            </column>
+            <column name="firstname" type="varchar(80)"/>
+            <column name="lastname" type="varchar(80)"/>
+            <column name="street" type="varchar(80)"/>
+            <column name="no" type="varchar(10)"/>
+            <column name="town" type="varchar(80)"/>
+            <column name="code" type="varchar(6)"/>
+            <column name="status" type="int"/>
+            <column name="create_data" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP">
+            </column>
+        </createTable>
+
+<!--        <createTable tableName="ordersLin">-->
+<!--            <column name="order_number" type="bigint">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="lin_id" type="int">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="product" type="varchar(255)"/>-->
+<!--            <column name="quantity" type="int"/>-->
+<!--            <column name="price" type="decimal(6, 2)"/>-->
+<!--            <column name="createData" type="timestamp"/>-->
+<!--        </createTable>-->
+
+        <!--        <createTable tableName="products">-->
+<!--            <column name="id" type="uuid">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="catalog_price" type="decimal(19, 2)"/>-->
+<!--            <column name="discount_authorized_by" type="varchar(255)"/>-->
+<!--            <column name="discount_reason" type="varchar(255)"/>-->
+<!--            <column name="amount" type="double(17)"/>-->
+<!--            <column name="net_amount" type="double(17)"/>-->
+<!--            <column name="vat_amount" type="double(17)"/>-->
+<!--            <column name="vat_id" type="varchar(255)"/>-->
+<!--            <column name="vat_rate" type="double(17)"/>-->
+<!--            <column name="name" type="varchar(255)"/>-->
+<!--            <column name="plu" type="varchar(255)"/>-->
+<!--            <column name="price_list_id" type="varchar(255)"/>-->
+<!--            <column name="quantity" type="int(10)"/>-->
+<!--            <column name="sale_price" type="decimal(19, 2)"/>-->
+<!--            <column name="sales_channel" type="varchar(255)"/>-->
+<!--            <column name="sales_points" type="varchar(255)"/>-->
+<!--            <column name="sales_document_id" type="uuid"/>-->
+<!--        </createTable>-->
+
+<!--        <createTable tableName="receipts">-->
+<!--            <column name="id" type="uuid">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="cash_register_number" type="varchar(255)"/>-->
+<!--            <column name="created_at" type="timestamp"/>-->
+<!--            <column name="external_id" type="varchar(255)"/>-->
+<!--            <column name="shop_id" type="varchar(255)"/>-->
+<!--            <column name="user_id" type="varchar(255)"/>-->
+<!--            <column name="order_id" type="uuid"/>-->
+<!--        </createTable>-->
+
+
+
+
+<!--        <addForeignKeyConstraint baseTableName="ordersLin"-->
+<!--                                 baseColumnNames="order_number"-->
+<!--                                 referencedTableName="orders"-->
+<!--                                 referencedColumnNames="order_number"-->
+<!--                                 constraintName="fk_ordersLin_order_number"/>-->
+<!--        <createIndex tableName="orders" indexName="idx_orders_order_number">-->
+<!--            <column name="order_number"/>-->
+<!--        </createIndex>-->
+
+
+    </changeSet>
+
+</databaseChangeLog>

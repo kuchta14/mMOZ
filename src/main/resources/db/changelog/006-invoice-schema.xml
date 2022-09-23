@@ -1,0 +1,36 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="dkuchta" id="6">
+
+        <createTable tableName="invoice">
+
+            <column name="id" type="int" >
+                <constraints  primaryKey="true"  />
+            </column>
+            <column name="order_number" type="bigint"  >
+                <constraints  primaryKey="true" />
+            </column>
+            <column name="firstname" type="varchar(80)"/>
+            <column name="lastname" type="varchar(80)"/>
+            <column name="street" type="varchar(80)"/>
+            <column name="no" type="varchar(10)"/>
+            <column name="town" type="varchar(80)"/>
+            <column name="code" type="varchar(6)"/>
+            <column name="status" type="int"/>
+            <column name="create_data" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP">
+            </column>
+            <column name="nip" type="varchar(20)"/>
+        </createTable>
+
+        <addAutoIncrement
+                columnDataType="int"
+                columnName="id"
+                startWith="1"
+                tableName="invoice"/>
+    </changeSet>
+
+</databaseChangeLog>

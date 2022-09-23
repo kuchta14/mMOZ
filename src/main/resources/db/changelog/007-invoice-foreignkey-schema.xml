@@ -1,0 +1,19 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="dkuchta" id="7">
+
+
+        <addForeignKeyConstraint baseTableName="invoice"
+                                 baseColumnNames="order_number"
+                                 referencedTableName="orders"
+                                 referencedColumnNames="order_number"
+                                 constraintName="fk_invoice_order_number"/>
+
+
+    </changeSet>
+
+</databaseChangeLog>
