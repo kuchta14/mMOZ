@@ -17,6 +17,8 @@
     <button type="submit">Anuluj zamówienie</button>
 </form:form>
 <a href="<c:url value="/order/invoice/${order.order_number}"/>">Wystaw fakturę</a>
+<a href="<c:url value="/order/invoice/doc/${order.order_number}"/>">Dokumenty</a>
+<a href="<c:url value="/retryorder/${order.order_number}"/>">Ponów</a>
 <br>
 <c:out value="${order.order_number}"/>
 <c:out value="${order.firstname}"/>

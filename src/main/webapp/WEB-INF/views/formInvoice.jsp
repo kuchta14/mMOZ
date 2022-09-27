@@ -7,21 +7,28 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Wystaw fakturę</title>
+    <style>
+        .errors {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <form:form method="post" action="/order/invoice" modelAttribute="invoice">
-    <form:input path="order_number" value="${order}" /><br />
-    First name: <form:input path="firstname" /><br />
-    Last name: <form:input path="lastname" /><br />
-    street: <form:input path="street" /><br />
-    no: <form:input path="no" /><br />
-    town: <form:input path="town" /><br />
-    code: <form:input path="code" /><br />
-    Nip: <form:input path="nip" /><br />
+    <form:input type="hidden" path="order_number" value="${order}" /><br />
+    First name: <form:input path="firstname" /><form:errors path="firstname" cssClass="errors"/><br />
+    Last name: <form:input path="lastname" /><form:errors path="lastname" cssClass="errors"/><br />
+    street: <form:input path="street" /><form:errors path="street" cssClass="errors"/><br />
+    no: <form:input path="no" /><form:errors path="no" cssClass="errors"/><br />
+    town: <form:input path="town" /><form:errors path="town" cssClass="errors"/><br />
+    code: <form:input path="code" /><form:errors path="code" cssClass="errors"/><br />
+    Nip: <form:input path="nip" /><form:errors path="nip" cssClass="errors"/><br />
     <button type="submit">Wystaw</button>
 </form:form>
+<c:out value="${dupa}"/>
 </body>
 </html>

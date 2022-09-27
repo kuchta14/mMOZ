@@ -5,6 +5,7 @@ import com.example.mMOZ.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class InvoiceService {
@@ -22,11 +23,12 @@ public class InvoiceService {
         invoiceRepository.save(invoice);
     }
 
-    public Boolean findInvoiceByorderNumber(Long order_number) {
-//        if (invoiceRepository.findInvoiceByOrder_numberExists(order_number)) {
-//            return true;
-//        }
-        return true;
+    public Invoice findInvoiceByorderNumber(Long order_number) {
+        return invoiceRepository.findInvoiceByOrder_number(order_number);
+    }
+
+    public List<Integer> findInvoiceByorderNumberDoc(List<Long> order_number) {
+        return invoiceRepository.findInvoiceByOrder_numberNumberDoc(order_number);
     }
 
 }

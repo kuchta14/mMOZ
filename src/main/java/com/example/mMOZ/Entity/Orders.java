@@ -45,9 +45,12 @@ public class Orders {
     @JoinTable(name = "orders_products", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "name_id"))
     private Set<Products> products;
+    //private int id;
 
     public Orders() {
     }
+
+
 
 
 

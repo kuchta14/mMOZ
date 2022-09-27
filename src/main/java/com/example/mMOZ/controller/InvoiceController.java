@@ -6,11 +6,13 @@ import com.example.mMOZ.service.InvoiceService;
 import com.example.mMOZ.service.OrderApiService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,17 +33,31 @@ public class InvoiceController {
         return "formInvoice";
     }
 
+    @GetMapping("/order/invoice/doc/{order_number}")
+    public String invoiceDoc(Model model, @PathVariable long order_number) {
+        model.addAttribute("invoice", invoiceService.findInvoiceByorderNumber(order_number));
+        return "docInvoice";
+    }
+
     @PostMapping("/order/invoice")
-    public String invoiceFormPost (Invoice invoice, Model model) {
-        if (invoiceService.findInvoiceByorderNumber(invoice.getOrder_number()))
-        {
-            invoiceService.save(invoice);
-        }
-        else {
-            model.addAttribute("false", "Faktura jest już wystawiona");
+    public String invoiceFormPost (@Valid @ModelAttribute Invoice invoice, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            return "formInvoice";
         }
 
-        return "redirect:order/"+ invoice.getOrder_number();
+        if (invoiceService.findInvoiceByorderNumber(invoice.getOrder_number()).getStatus()==1)
+        {
+            model.addAttribute("dupa", "Faktura jest już wystawiona");
+            return "formInvoice";
+
+        }
+        else {
+            invoiceService.save(invoice);
+        }
+
+
+        return "redirect:/order/"+ invoice.getOrder_number();
     }
 
 

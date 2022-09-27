@@ -18,6 +18,6 @@ List<Orders> findAll();
 @Query(value = "SELECT * FROM orders a WHERE a.order_number = ?1",nativeQuery = true)
 Orders findByorderNumber(long order_number);
 
-@Query(value = "SELECT * FROM orders b order by b.create_data DESC LIMIT 5",nativeQuery = true)
+@Query(value = "SELECT b.* FROM orders b order by b.create_data DESC LIMIT 5",nativeQuery = true)
 List<Orders> findTop10ByOrderNumberDesc();
 }

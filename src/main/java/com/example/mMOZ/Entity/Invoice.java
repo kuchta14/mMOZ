@@ -24,16 +24,17 @@ public class Invoice {
     @Id
     private int id;
     private Long order_number;
-    @NotBlank
-    @Size(max = 80)
+    @NotBlank(message = "Imię nie może być puste")
+    @Size(max = 80,message = "Imię nie może mieć powyżej 80 znaków")
     private String firstname;
-    @Size(max = 80)
+    @NotBlank(message = "Nazwisko nie może być puste")
+    @Size(max = 80,message = "Nazwisko nie może mieć powyżej 80 znaków")
     private String lastname;
-    @Size(max = 80)
+    @Size(max = 80,message = "Ulica nie może mieć powyżej 80 znaków")
     private String street;
-    @Size(max = 10)
+    @Size(max = 10,message = "Numer domu nie może mieć powyżej 10 znaków")
     private String no;
-    @Size(max = 80)
+    @Size(max = 80,message = "Miasto nie może mieć powyżej 80 znaków")
     private String town;
     @Pattern(regexp = "^\\d{2}-\\d{3}$", message = "Błędny format kodu pocztowego XX-XXX")
     private String code;
