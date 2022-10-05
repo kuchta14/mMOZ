@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -41,7 +42,7 @@ public class Order {
     @GetMapping()
     public String readTopOrder(Model model) {
         model.addAttribute("orders", orderApiService.findTop10ByOrderNumberDesc());
-        model.addAttribute("invoicenr",invoiceService.findInvoiceByorderNumberDoc(orderApiService.findTop10ByOrderNumberDesc().stream().toArray()..forEach(p->p.getOrder_number())));
+        //model.addAttribute("invoicenr",invoiceService.findInvoiceByorderNumberDoc(orderApiService.findTop10ByOrderNumberDesc().stream().toArray()..forEach(p->p.getOrder_number())));
         return "orders";
     }
 
@@ -59,12 +60,17 @@ public class Order {
     public String readByOrder(@PathVariable long order_number, Model model) {
         model.addAttribute("order", orderApiService.findByOrderNumber(order_number));
         model.addAttribute("products", productsService.findByOrderNumberProducts(order_number));
+        model.addAttribute("suma", productsService.findByOrderNumberProducts(order_number).stream().mapToDouble(p -> p.getPrice()).sum());
         return "ordersSpecific";
     }
 
     @PostMapping("setOrder")
-    public String setOrder(@Valid @ModelAttribute("order") Orders order, BindingResult bindingResult,Model model, @RequestParam  List<String> products) {
+    public String setOrder(@Valid @ModelAttribute("order") Orders order,BindingResult bindingResult,Model model, @NotBlank @RequestParam List<String> products) {
         if (bindingResult.hasErrors()) {
+            return "formorders";
+        }
+        if (products.isEmpty()) {
+            model.addAttribute("prod", "Wybierz produkt");
             return "formorders";
         }
         orderApiService.save(order,products);
@@ -96,15 +102,15 @@ public class Order {
     @GetMapping ("retryorder/{order_number}")
     public String retryOrder(@PathVariable long order_number, Model model){
         Orders order = orderApiService.findByOrderNumber(order_number);
+      if (order.getStatus() == 0) {
+          if (sendOrder.sendOrderErp(order.getOrder_number()) == HttpStatus.OK) {
+              order.setStatus(1);
+          } else {
+              order.setStatus(0);
+          }
 
-        if (sendOrder.sendOrderErp(order.getOrder_number()) == HttpStatus.OK) {
-            order.setStatus(1);
-        }
-        else {
-            order.setStatus(0);
-        }
-
-        orderApiService.update(order);
+          orderApiService.update(order);
+      }
         model.addAttribute("order", order);
         return "redirect:/order/"+order_number;
     }

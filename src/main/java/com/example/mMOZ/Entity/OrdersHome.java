@@ -7,19 +7,20 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Products {
+public class OrdersHome {
 
-    @Id
-    private String name;
-    private int quantity;
-    private double price;
-    private String url;
-
+@Id
+    private Long order_number;
+    private String firstname;
+    private String lastname;
+    private String create_data;
+    private int status;
+    private double suma;
+    private String fa;
 }

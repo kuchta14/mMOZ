@@ -2,6 +2,7 @@ package com.example.mMOZ.service;
 
 
 import com.example.mMOZ.Entity.Orders;
+import com.example.mMOZ.Entity.OrdersHome;
 import com.example.mMOZ.Entity.Products;
 import com.example.mMOZ.Rest.sendOrder;
 import com.example.mMOZ.repository.OrdersRepository;
@@ -69,5 +70,5 @@ public class OrderApiService {
 
     public List<Orders> findTop10ByOrderNumberDesc(){ return OrdersRepo.findTop10ByOrderNumberDesc();}
 
-
+    public List<OrdersHome> findTop10ByOrderNumberDesc2(){ return OrdersRepo.findTop10ByOrderNumberDesc2();}
 }

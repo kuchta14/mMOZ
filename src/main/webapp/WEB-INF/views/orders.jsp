@@ -12,12 +12,12 @@
 <br>
 <table class="table table-striped">
     <colgroup>
-        <col width="15.1%">
-        <col width="12.6%">
-        <col width="12.8%">
-        <col width="18.5%">
-        <col width="18.5%">
-        <col width="18.5%">
+        <col width="25.1%">
+        <col width="18.6%">
+        <col width="18.6%">
+        <col width="20.5%">
+<%--        <col width="18.5%">--%>
+<%--        <col width="18.5%">--%>
     </colgroup>
     <thead class="thead-dark">
     <tr>
@@ -25,8 +25,9 @@
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>Data utworzenia</th>
-        <th>Płatność</th>
-        <th>Faktura</th>
+        <th>Status</th>
+<%--        <th>Brutto</th>--%>
+<%--        <th>Faktura</th>--%>
     </tr>
     </thead>
     <tbody>
@@ -36,17 +37,19 @@
             <td><c:out value="${a.firstname}"/></td>
             <td><c:out value="${a.lastname}"/></td>
             <td><c:out value="${a.create_data}"/></td>
-
+            <td><c:out value="${a.status}"/></td>
+<%--            <td><c:out value="${a.suma}"/></td>--%>
+<%--            <td><c:out value="${a.fa}"/></td>--%>
         </tr>
     </c:forEach>
-    <c:forEach items="${invoicenr}" var="b">
-        <tr>
-            <td><c:out value="${b}"/></td>
-        </tr>
-    </c:forEach>
+<%--    <c:forEach items="${invoicenr}" var="b">--%>
+<%--        <tr>--%>
+<%--            <td><c:out value="${b}"/></td>--%>
+<%--        </tr>--%>
+<%--    </c:forEach>--%>
     </tbody>
 </table>
-
+<a href="/all" class="badge bg-primary rounded-pill">Pokaż wszystkie</a>
 <jsp:include page="footer.jsp"/>
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.js"></script>
 </body>

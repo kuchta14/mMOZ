@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InvoiceService {
@@ -23,7 +24,11 @@ public class InvoiceService {
         invoiceRepository.save(invoice);
     }
 
-    public Invoice findInvoiceByorderNumber(Long order_number) {
+    public Optional<Invoice> findInvoiceByorderNumber(Long order_number) {
+        return invoiceRepository.findInvoiceByOrder_numberTrue(order_number);
+    }
+
+    public Invoice findInvoiceByorderNumber2(Long order_number) {
         return invoiceRepository.findInvoiceByOrder_number(order_number);
     }
 

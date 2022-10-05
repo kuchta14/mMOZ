@@ -23,9 +23,8 @@
     </a>
 
     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+      <li><a href="/" class="nav-link px-2 text-secondary">Lista zleceń</a></li>
       <li><a href="/form/order" class="nav-link px-2 text-white">Złóż zamówienie</a></li>
-      <li><a href="/all" class="nav-link px-2 text-white">Pokaż wszystkie zamówienia</a></li>
     </ul>
     <sec:authorize access="isAuthenticated()">
       <p class="text-light me-2">Zalogowany jako: <sec:authentication property="principal.username"/></p>

@@ -10,12 +10,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Logowanie</title>
     <link rel="stylesheet"
           href="/webjars/bootstrap/5.2.0/css/bootstrap.css"/>
 </head>
 <body class="bg-light">
-
+<jsp:include page="navbar.jsp"/>
 
 <div class="container-fluid bg-light">
     <div class="row">
@@ -34,14 +34,11 @@
                     <label for="exampleInputPassword1" class="form-label">Hasło</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Zapamiętaj mnie</label>
-                </div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <button type="submit" class="btn btn-primary">Zaloguj</button>
             </form>
         </div>
+        <br>
         <div class="col-4">
             <form:form method="POST" action="/create-user" modelAttribute="user" class="row g-3">
             <div class="mb-3">
@@ -61,6 +58,7 @@
 </div>
 <div><br><br><br><br><br></div>
 </div>
+<jsp:include page="footer.jsp"/>
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.js"></script>
 </body>
 </html>

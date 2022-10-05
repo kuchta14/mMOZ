@@ -1,7 +1,6 @@
 package com.example.mMOZ.controller;
 
 import com.example.mMOZ.Entity.Invoice;
-import com.example.mMOZ.Entity.Products;
 import com.example.mMOZ.service.InvoiceService;
 import com.example.mMOZ.service.OrderApiService;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class InvoiceController {
@@ -35,8 +33,18 @@ public class InvoiceController {
 
     @GetMapping("/order/invoice/doc/{order_number}")
     public String invoiceDoc(Model model, @PathVariable long order_number) {
-        model.addAttribute("invoice", invoiceService.findInvoiceByorderNumber(order_number));
-        return "docInvoice";
+
+        if (invoiceService.findInvoiceByorderNumber(order_number).isPresent())
+        {
+            model.addAttribute("invoice", invoiceService.findInvoiceByorderNumber2(order_number));
+            return "docInvoice";
+
+        }
+        else {
+//            model.addAttribute("faktura", "Brak dokumentów");
+            return "redirect:/order/"+ order_number;
+        }
+
     }
 
     @PostMapping("/order/invoice")
@@ -46,9 +54,9 @@ public class InvoiceController {
             return "formInvoice";
         }
 
-        if (invoiceService.findInvoiceByorderNumber(invoice.getOrder_number()).getStatus()==1)
+        if (invoiceService.findInvoiceByorderNumber(invoice.getOrder_number()).isPresent())
         {
-            model.addAttribute("dupa", "Faktura jest już wystawiona");
+            model.addAttribute("faktura", "Faktura jest już wystawiona");
             return "formInvoice";
 
         }

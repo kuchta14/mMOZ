@@ -12,17 +12,45 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/5.2.0/css/bootstrap.css"/>
 </head>
 <body>
-<c:out value="${invoice.order_number}"/>
-<c:out value="${invoice.firstname}"/>
-<c:out value="${invoice.lastname}"/>
-<c:out value="${invoice.street}"/>
-<c:out value="${invoice.no}"/>
-<c:out value="${invoice.town}"/>
-<c:out value="${invoice.code}"/>
-<c:out value="${invoice.nip}"/>
-<c:out value="${invoice.status}"/>
-<c:out value="${invoice.create_data}"/>
+<jsp:include page="navbar.jsp"/>
+<br>
+<h4 class="mb-3">Zlecenie Nr <c:out value="${invoice.order_number}"/></h4>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Nr FAV</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+        <th scope="col">Ulica</th>
+        <th scope="col">Nr</th>
+        <th scope="col">Miasto</th>
+        <th scope="col">Kod pocztowy</th>
+        <th scope="col">Nip</th>
+        <th scope="col">Status</th>
+        <th scope="col">Data Utworzenia</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>FAV/<c:out value="${invoice.id}"/>/2022</td>
+        <td><c:out value="${invoice.firstname}"/></td>
+        <td><c:out value="${invoice.lastname}"/></td>
+        <td><c:out value="${invoice.street}"/></td>
+        <td><c:out value="${invoice.no}"/></td>
+        <td><c:out value="${invoice.town}"/></td>
+        <td><c:out value="${invoice.code}"/></td>
+        <td><c:out value="${invoice.nip}"/></td>
+        <td><c:out value="${invoice.status}"/></td>
+        <td><c:out value="${invoice.create_data}"/></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<jsp:include page="footer.jsp"/>
+<script src="/webjars/bootstrap/5.2.0/js/bootstrap.js"></script>
 </body>
 </html>
