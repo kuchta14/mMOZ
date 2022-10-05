@@ -16,7 +16,7 @@
 </head>
 <body class="bg-light">
 <jsp:include page="navbar.jsp"/>
-
+<br>
 <div class="container-fluid bg-light">
     <div class="row">
         <div class="col-2 ">
@@ -38,26 +38,26 @@
                 <button type="submit" class="btn btn-primary">Zaloguj</button>
             </form>
         </div>
-        <br>
+
         <div class="col-4">
             <form:form method="POST" action="/create-user" modelAttribute="user" class="row g-3">
             <div class="mb-3">
-                <label for="inputEmail4" class="form-label">Nazwa użytkownika</label>
-                <form:input path="username" type="text" class="form-control" id="validationServerUsername"/>
+                <label  class="form-label">Nazwa użytkownika</label>
+                <form:input path="username" type="text" class="form-control" />
             </div>
             <div class="mb-3">
-                <label for="inputPassword4" class="form-label">Hasło</label>
-                <form:input path="password" type="password" class="form-control" id="inputPassword4"/>
+                <label  class="form-label">Hasło</label>
+                <form:input path="password" type="password" class="form-control" />
             </div>
-        </div>
+
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Zarejestruj</button>
+        </div>
         </div>
         </form:form>
     </div>
 </div>
-<div><br><br><br><br><br></div>
-</div>
+<c:out value="${success}"/>
 <jsp:include page="footer.jsp"/>
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.js"></script>
 </body>

@@ -26,15 +26,11 @@ public class UserController {
     @PostMapping("/create-user")
     public String createUser(Model model,User user) {
         if (user.getPassword().equals("") || user.getUsername().equals("")) {
+            model.addAttribute("fail1", "Brak podanego NazwyUżytkownika/Hasła");
             return "fail";
         }
-        try {
             userService.saveUser(user);
-            String success = "success";
-            model.addAttribute("success", success);
-        } catch (Exception e) {
-            return "fail";
-        }
+            model.addAttribute("success", "Rejestracja przebiegła poprawnie. Zaloguj się");
         return "login";
     }
 

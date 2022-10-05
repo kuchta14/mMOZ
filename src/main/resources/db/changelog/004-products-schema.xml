@@ -11,7 +11,7 @@
             <column name="name" type="varchar(255)"  >
                 <constraints  primaryKey="true" />
             </column>
-            <column name="quantity" type="int"/>
+<!--            <column name="quantity" type="int"/>-->
             <column name="price" type="decimal(19, 2)"/>
         </createTable>
 
