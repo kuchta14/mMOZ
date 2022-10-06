@@ -1,0 +1,68 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="dkuchta" id="8">
+
+        <insert tableName="products">
+            <column  name="name"  value="Laptop Apple MacBook Air"/>
+            <column  name="price" value="6499"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Konsola Sony PlayStation 5 (PS5)"/>
+            <column  name="price"  value="3549"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Fifa 23 PS5"/>
+            <column  name="price"  value="279"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Smartfon Samsung Galaxy A53 5G"/>
+            <column  name="price"  value="1699"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Smartfon Samsung Galaxy S20 FE 5G"/>
+            <column  name="price"  value="2199"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Telewizor Samsung QLED QE65Q77BAT"/>
+            <column  name="price"  value="4699"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Telewizor Samsung QLED QE55Q77BAT"/>
+            <column  name="price"  value="3999"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Zmywarka Electrolux EES47311L"/>
+            <column  name="price"  value="1699"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Piekarnik Samsung Dual Cook Flex"/>
+            <column  name="price"  value="2599"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Płyta indukcyjna Whirlpool WF S8865 NE"/>
+            <column  name="price"  value="1899"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Lodówka Bosch KGN49LBEA"/>
+            <column  name="price"  value="3799"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Monitor Samsung C27G55TQWR"/>
+            <column  name="price"  value="1199"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Hulajnoga elektryczna Neoline T28"/>
+            <column  name="price"  value="2499"/>
+        </insert>
+        <insert tableName="products">
+            <column  name="name"  value="Karta graficzna ASrock Radeon RX 6900 XT"/>
+            <column  name="price"  value="10899"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

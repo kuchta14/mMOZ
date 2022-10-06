@@ -10,6 +10,6 @@
     <include file="005-order-products-schema.xml" relativeToChangelogFile="true"/>
     <include file="006-invoice-schema.xml" relativeToChangelogFile="true"/>
     <include file="007-invoice-foreignkey-schema.xml" relativeToChangelogFile="true"/>
-    <include file="008-add-column-schema.xml" relativeToChangelogFile="true"/>
+    <include file="008-insert-products-schema.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

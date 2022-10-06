@@ -18,8 +18,6 @@ public class Products {
 
     @Id
     private String name;
-    private int quantity;
     private double price;
-    private String url;
 
 }

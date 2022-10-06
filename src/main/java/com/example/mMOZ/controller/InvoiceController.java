@@ -34,6 +34,7 @@ public class InvoiceController {
     @GetMapping("/order/invoice/doc/{order_number}")
     public String invoiceDoc(Model model, @PathVariable long order_number) {
 
+
         if (invoiceService.findInvoiceByorderNumber(order_number).isPresent())
         {
             model.addAttribute("invoice", invoiceService.findInvoiceByorderNumber2(order_number));
@@ -41,7 +42,7 @@ public class InvoiceController {
 
         }
         else {
-//            model.addAttribute("faktura", "Brak dokumentów");
+//          model.addAttribute("faktura", "Brak dokumentów");
             return "redirect:/order/"+ order_number;
         }
 
@@ -51,6 +52,12 @@ public class InvoiceController {
     public String invoiceFormPost (@Valid @ModelAttribute Invoice invoice, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
+            return "formInvoice";
+        }
+
+        if (orderApiService.findByOrderNumber(invoice.getOrder_number()).getStatus() == -1)
+        {
+            model.addAttribute("faktura", "Zamówienie jest anulowane, nie można wystawić FAV");
             return "formInvoice";
         }
 

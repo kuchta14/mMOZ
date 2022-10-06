@@ -75,7 +75,7 @@
     <ol class="list-group">
 <%--        <img src="<c:out value="${a.url}"/>" class="mw-10" alt="...">--%>
         <li class="list-group-item"><c:out value="${a.name}"/>
-            -Brutto:<small class="text-muted"><c:out value="${a.price}"/></small></li>
+            - <small class="text-muted"><c:out value="${a.price}"/></small></li>
     </ol>
 
 </c:forEach>

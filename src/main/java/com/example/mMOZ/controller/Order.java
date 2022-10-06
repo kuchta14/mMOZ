@@ -15,10 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -29,7 +25,6 @@ public class Order {
     private final OrderApiService orderApiService;
     private final ProductsService productsService;
     private final sendOrder sendOrder;
-
     private final InvoiceService invoiceService;
 
     public Order(OrderApiService orderApiService, ProductsService productsService, com.example.mMOZ.Rest.sendOrder sendOrder, InvoiceService invoiceService) {
@@ -65,7 +60,7 @@ public class Order {
     }
 
     @PostMapping("setOrder")
-    public String setOrder(@Valid @ModelAttribute("order") Orders order,BindingResult bindingResult,Model model, @NotBlank @RequestParam List<String> products) {
+    public String setOrder(@Valid @ModelAttribute("order") Orders order ,BindingResult bindingResult,Model model, @RequestParam List<String> products) {
         if (bindingResult.hasErrors()) {
             return "formorders";
         }
