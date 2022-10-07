@@ -42,8 +42,9 @@ public class InvoiceController {
 
         }
         else {
-//          model.addAttribute("faktura", "Brak dokumentów");
-            return "redirect:/order/"+ order_number;
+             model.addAttribute("faktura", "Brak dokumentów");
+            //return "redirect:/order/"+ order_number;
+            return "BrakDoc";
         }
 
     }

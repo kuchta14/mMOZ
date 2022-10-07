@@ -17,10 +17,10 @@
 <body>
 <jsp:include page="navbar.jsp"/>
 <br>
+<c:out value="${faktura}"/>
 <h4 class="mb-3">Zlecenie Nr <c:out value="${order.order_number}"/></h4>
 <a class="badge bg-primary rounded-pill text-bg-dark" href="<c:url value="/order/invoice/${order.order_number}"/>">Wystaw fakturę</a>
 <a class="badge bg-primary rounded-pill text-bg-dark" href="<c:url value="/order/invoice/doc/${order.order_number}"/>">Dokumenty</a>
-<c:out value="${faktura}"/>
 <a class="badge bg-primary rounded-pill text-bg-dark" href="<c:url value="/retryorder/${order.order_number}"/>">Ponów</a>
 <br>
 <br>

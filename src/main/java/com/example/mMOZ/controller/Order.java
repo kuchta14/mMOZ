@@ -60,7 +60,7 @@ public class Order {
     }
 
     @PostMapping("setOrder")
-    public String setOrder(@Valid @ModelAttribute("order") Orders order ,BindingResult bindingResult,Model model, @RequestParam List<String> products) {
+    public String setOrder(@Valid @ModelAttribute("order") Orders order, BindingResult bindingResult, Model model, @RequestParam List<String> products) {
         if (bindingResult.hasErrors()) {
             return "formorders";
         }
@@ -68,7 +68,7 @@ public class Order {
             model.addAttribute("prod", "Wybierz produkt");
             return "formorders";
         }
-        orderApiService.save(order,products);
+        orderApiService.save(order, products);
         return "redirect:/";
     }
 
@@ -85,31 +85,33 @@ public class Order {
     }
 
     @PostMapping("order/cancel/{order_number}")
-    public String cancelOrder(@PathVariable long order_number, Model model){
+    public String cancelOrder(@PathVariable long order_number, Model model) {
         Orders order = orderApiService.findByOrderNumber(order_number);
-        order.setStatus(-1);
 
-        orderApiService.update(order);
+        if (order.getStatus() != -1) {
+            order.setStatus(-1);
+            orderApiService.update(order);
+        }
+
         model.addAttribute("order", order);
-        return "redirect:/order/"+order_number;
+        return "redirect:/order/" + order_number;
     }
 
-    @GetMapping ("retryorder/{order_number}")
-    public String retryOrder(@PathVariable long order_number, Model model){
+    @GetMapping("retryorder/{order_number}")
+    public String retryOrder(@PathVariable long order_number, Model model) {
         Orders order = orderApiService.findByOrderNumber(order_number);
-      if (order.getStatus() == 0) {
-          if (sendOrder.sendOrderErp(order.getOrder_number()) == HttpStatus.OK) {
-              order.setStatus(1);
-          } else {
-              order.setStatus(0);
-          }
+        if (order.getStatus() == 0) {
+            if (sendOrder.sendOrderErp(order.getOrder_number()) == HttpStatus.OK) {
+                order.setStatus(1);
+            } else {
+                order.setStatus(0);
+            }
 
-          orderApiService.update(order);
-      }
+            orderApiService.update(order);
+        }
         model.addAttribute("order", order);
-        return "redirect:/order/"+order_number;
+        return "redirect:/order/" + order_number;
     }
-
 
 
 }
